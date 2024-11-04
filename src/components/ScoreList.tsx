@@ -1,7 +1,6 @@
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import { ChevronDownDuo, ChevronRightDuo } from '@northlight/icons'
-import { Fragment } from 'react'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 export interface ScoreData {
   id: number

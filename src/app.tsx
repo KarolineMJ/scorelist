@@ -13,7 +13,7 @@ const getInitialUsers = () => {
       const userScores = scores
         .filter(score => score.userId === user._id)
         .map(score => score.score)
-      const maxScore = Math.max(...userScores, 0) // Find the highest score for each user
+      const maxScore = Math.max(...userScores, 0)
       return {
         id: user._id,
         name: user.name,
@@ -21,35 +21,26 @@ const getInitialUsers = () => {
         bestScore: maxScore,
       }
     })
-    .sort((a, b) => b.bestScore - a.bestScore) // Sort by highest score descending
+    .sort((a, b) => b.bestScore - a.bestScore)
 }
 
 export default function App() {
   const [scoreData, setScoreData] = useState<ScoreData[]>(getInitialUsers())
 
-  // Handle Excel sheet data import
   const handleSheetData = (data: ExcelRow[]) => {
     setScoreData(prevData => {
       const updatedData = [...prevData]
 
       data.forEach(row => {
-        const name = row.name
-        const score = parseInt(row.score.toString(), 10) // Ensure score is an integer
-
-        if (isNaN(score)) return // Skip invalid scores
-
-        // Check if the user already exists in the list
+        const { name, score } = row
         const existingUser = updatedData.find(user => user.name === name)
 
         if (existingUser) {
-          // Add new score to existing user's scores
           existingUser.scores.push(score)
-          // Update bestScore
           existingUser.bestScore = Math.max(...existingUser.scores)
         } else {
-          // Add new user with initial score
           updatedData.push({
-            id: Date.now(), // Unique ID for new user
+            id: Date.now(),
             name,
             scores: [score],
             bestScore: score,
@@ -57,7 +48,6 @@ export default function App() {
         }
       })
 
-      // Sort updated data by bestScore in descending order
       return updatedData.sort((a, b) => b.bestScore - a.bestScore)
     })
   }

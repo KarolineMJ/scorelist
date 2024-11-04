@@ -13,7 +13,7 @@ const ScoreList = ({ scoreData }: { scoreData: ScoreData[] }) => {
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null)
 
   const handleUserClick = (userId: number) => {
-    setSelectedUserId(selectedUserId === userId ? null : userId) // Toggle user selection
+    setSelectedUserId(selectedUserId === userId ? null : userId)
   }
 
   return (

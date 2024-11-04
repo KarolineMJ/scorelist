@@ -18,7 +18,6 @@ const ScoreForm = ({
     score: number | null
   }>({ name: '', score: null })
 
-  // Update form data as user types
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement> | string,
   ) => {
@@ -29,7 +28,6 @@ const ScoreForm = ({
     }))
   }
 
-  // Handle form submission
   const handleFormSubmit = () => {
     const { name, score } = formData
     if (!score) return
@@ -39,11 +37,9 @@ const ScoreForm = ({
       const updatedData = [...prevData]
       const existingUser = updatedData.find(user => user.name === name)
       if (existingUser) {
-        // Update existing user
         existingUser.scores.push(scoreNum)
         existingUser.bestScore = Math.max(...existingUser.scores)
       } else {
-        // Add new user
         updatedData.push({
           id: Date.now(),
           name,
@@ -51,10 +47,10 @@ const ScoreForm = ({
           bestScore: scoreNum,
         })
       }
-      return updatedData.sort((a, b) => b.bestScore - a.bestScore) // Sort after updating
+      return updatedData.sort((a, b) => b.bestScore - a.bestScore)
     })
 
-    setFormData({ name: '', score: null }) // Reset form
+    setFormData({ name: '', score: null })
   }
   return (
     <Form

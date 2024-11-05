@@ -59,7 +59,7 @@ export default function App() {
 
   return (
     <Container maxW="6xl" padding="4">
-      <H1 marginBottom="4">Mediatool exercise</H1>
+      <H1 marginBottom="4">Score list</H1>
       <Grid
         templateColumns={{
           base: 'repeat(1, 1fr)',

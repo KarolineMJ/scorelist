@@ -1,12 +1,4 @@
-# Mediatool interview exercise
-
-Welcome to the Mediatool exercise preparing for your on site interview. In this repository you will find an initial react app that is
-set up with transpilers and livereload so that you won't need to focus on such things.
-
-Below you will find instructions for how to run the app and the exercise itself. Good luck!
-
 ## Working with the application
-
 After cloning this repo, install all dependencies using `npm`. When that is complete, run the server by executing `npm run start`.
 You will now be able to access the initial application through your browser at the url displayed in your terminal.
 
